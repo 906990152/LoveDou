@@ -38,7 +38,7 @@ public abstract class AppDelegate implements IDelegate {
     }
 
     @Override
-    public void initVaule() {
+    public void initValue() {
 
     }
 

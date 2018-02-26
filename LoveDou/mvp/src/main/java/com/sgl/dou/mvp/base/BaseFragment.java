@@ -51,7 +51,7 @@ public abstract class BaseFragment<V extends AppDelegate> extends Fragment {
         Log.e("sgl1", "onViewCreated-----");
         isPrepared = true;
         viewDelegate.initWidget();
-        viewDelegate.initVaule();
+        viewDelegate.initValue();
         initView();
         initValue();
         lazyLoad();

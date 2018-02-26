@@ -30,7 +30,7 @@ public abstract class BaseAcitvity<T extends AppDelegate> extends AppCompatActiv
         viewDelegate.create(getLayoutInflater(), null, savedInstanceState);
         setContentView(viewDelegate.getRootView());
         viewDelegate.initWidget();//控件初始化
-        viewDelegate.initVaule();//给控件赋值
+        viewDelegate.initValue();//给控件赋值
         initView();
         initValue();
         getData();

@@ -16,5 +16,5 @@ public interface IDelegate {
     View getRootView();//得到根布局
 
     void initWidget();//初始化控件
-    void initVaule();//初始化控件设置值
+    void initValue();//初始化控件设置值
 }
