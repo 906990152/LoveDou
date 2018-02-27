@@ -15,13 +15,15 @@ android {
             minifyEnabled true  //是否启动混淆
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            signingConfig signingConfigs.debug
+        }
     }
-
 }
 
 dependencies {
     //implementation 只在内有用到，其他module是调用不到的，编译速度也快，
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation rootProject.ext.dependencies['appcompat-v7']
     implementation rootProject.ext.dependencies['tablayout']
     implementation rootProject.ext.dependencies['roundview']
