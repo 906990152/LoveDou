@@ -1,0 +1,24 @@
+隐藏签名信息的做法：
+	1.在项目根目录下建gradle.properties文件
+		STOREFILE=./keystore/keystore.jks
+		STOREPASSWORD=xxx
+		KEYALIAS=xxx
+		KEYPASSWORD=xxx
+	
+	2.在build.gradle文件中读取配置文件
+		def keyStorePropertiesFile = rootProject.file("gradle.properties")
+		def keystoreProperties = new Properties()
+		keystoreProperties.load(new FileInputStream(keyStorePropertiesFile))
+	
+		android {
+			signingConfigs {
+				config {
+					storeFile file(keystoreProperties['ReleaseStoreFile'])
+					storePassword keystoreProperties['ReleaseStorePassword']
+					keyAlias keystoreProperties['ReleaseKeyAlias']
+					keyPassword keystoreProperties['ReleaseKeyPassword']
+				}
+			}
+		}
+	
+	3.把gradle.properties加到.gitignore不上传到版本库
