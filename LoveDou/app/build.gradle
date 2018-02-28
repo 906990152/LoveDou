@@ -56,6 +56,7 @@ dependencies {
     implementation rootProject.ext.dependencies['tablayout']
     implementation rootProject.ext.dependencies['roundview']
     implementation rootProject.ext.dependencies['multidex']
+    implementation rootProject.ext.dependencies['recyclerview-v7']
     implementation 'com.nineoldandroids:library:2.4.0'
     implementation project(':mvp')
     implementation project(':library')

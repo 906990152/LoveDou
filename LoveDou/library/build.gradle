@@ -43,8 +43,8 @@ dependencies {
     implementation rootProject.ext.dependencies['appcompat-v7']
     implementation rootProject.ext.dependencies['zxing']
     implementation rootProject.ext.dependencies['recyclerview-v7']
-    implementation rootProject.ext.dependencies['glide-transformations']
-    implementation rootProject.ext.dependencies['glide']
+    api rootProject.ext.dependencies['glide-transformations']
+    api rootProject.ext.dependencies['glide']
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'

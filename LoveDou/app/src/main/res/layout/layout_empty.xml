@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ly_empty"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:visibility="gone"
+    android:padding="@dimen/common_20dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_empty_msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_14sp"
+        android:textColor="@color/color_tv_gray_99"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/tv_banding"
+        android:layout_width="@dimen/common_120dp"
+        android:layout_height="@dimen/common_40dp"
+        android:layout_marginTop="@dimen/common_20dp"
+        android:text="前往绑定"
+        android:gravity="center"
+        android:visibility="gone"
+        android:textSize="@dimen/text_size_14sp"
+        android:textColor="@color/common_select_text_color"
+        android:background="#c88c46"/>
+
+</LinearLayout>

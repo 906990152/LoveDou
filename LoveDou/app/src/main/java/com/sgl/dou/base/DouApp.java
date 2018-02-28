@@ -9,9 +9,16 @@ import android.support.multidex.MultiDex;
  */
 
 public class DouApp extends Application {
+    public static Context context;
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         MultiDex.install(base);
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        context=getApplicationContext();
     }
 }

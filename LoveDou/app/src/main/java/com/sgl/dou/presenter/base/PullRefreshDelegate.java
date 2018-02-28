@@ -3,6 +3,8 @@ package com.sgl.dou.presenter.base;
 import com.scwang.smartrefresh.header.MaterialHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.sgl.dou.mvp.View.AppDelegate;
 
 /**
@@ -25,7 +27,7 @@ public abstract class PullRefreshDelegate extends AppDelegate {
         if (!havaPull) {
             return;
         }
-        refreshView = get(getRecycleViewId());
+        refreshView = get(getRefreshViewId());
 
     }
     //设置刷新控件刷新和加载风格
@@ -78,7 +80,53 @@ public abstract class PullRefreshDelegate extends AppDelegate {
         refreshView.setEnableOverScrollDrag(true);
         refreshView.setEnableScrollContentWhenLoaded(true);
     }
+    //设置刷新加载监听
+    public void setRreshOrLoadListener(OnRefreshListener listener, OnLoadMoreListener loadMoreListener){
+        refreshView.setOnRefreshListener(listener);
+        refreshView.setOnLoadMoreListener(loadMoreListener);
+    }
+    //设置自动刷新
+    public void setAutoRefresh(){
+        refreshView.autoRefresh();
+    }
+    //是有可以加载更多
+    public void setCanLoadMore(boolean more){
+        refreshView.setEnableLoadMore(more);
+        refreshView.finishLoadMore();
+        if (!more){
+            refreshView.finishLoadMoreWithNoMoreData();
+        }
+    }
+    //是否可以刷新
+    public void setCanRefresh(boolean refresh){
+        refreshView.setEnableRefresh(refresh);
+    }
+    public void setBoth(){
+        if (refreshModel==RECYCLER_BOTH||refreshModel==RECYCLER_LOAD){
+            refreshView.setEnableLoadMore(true);
+        }
+        if (refreshModel == RECYCLER_BOTH || refreshModel == RECYCLER_REFRESH) {
+            refreshView.setEnableRefresh(true);
+        }
+        setFootStyle();
+        refreshView.setNoMoreData(false);
+    }
+    //刷新加载完毕
+    public void complete(){
+        if (refreshView!=null){
+            refreshView.finishRefresh();
+            refreshView.finishLoadMore();
+        }
+    }
+    public void refresh(){
+        if (refreshView==null){
+            return;
+        }
+        if (refreshModel==RECYCLER_BOTH||refreshModel==RECYCLER_LOAD){
+            refreshView.setEnableLoadMore(true);
+        }
+    }
     //获取刷新控件的id
-    public abstract int getRecycleViewId();
+    public abstract int getRefreshViewId();
 
 }
