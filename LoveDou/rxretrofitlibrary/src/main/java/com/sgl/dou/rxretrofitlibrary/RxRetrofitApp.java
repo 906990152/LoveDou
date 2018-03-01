@@ -3,22 +3,15 @@ package com.sgl.dou.rxretrofitlibrary;
 import android.app.Application;
 
 /**
- * Created by Sola on 2018/1/4.
+ * 全局app
  */
 
-public class RxRetrofitApp {
+public class RxRetrofitApp  {
     private static Application application;
-    private static boolean debug;
-
+    public static boolean isDebug;
 
     public static void init(Application app){
         setApplication(app);
-        setDebug(true);
-    }
-
-    public static void init(Application app,boolean debug){
-        setApplication(app);
-        setDebug(debug);
     }
 
     public static Application getApplication() {
@@ -29,11 +22,4 @@ public class RxRetrofitApp {
         RxRetrofitApp.application = application;
     }
 
-    public static boolean isDebug() {
-        return debug;
-    }
-
-    public static void setDebug(boolean debug) {
-        RxRetrofitApp.debug = debug;
-    }
 }

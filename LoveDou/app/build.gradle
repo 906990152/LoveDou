@@ -51,15 +51,17 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation rootProject.ext.dependencies['appcompat-v7']
     implementation rootProject.ext.dependencies['rxlifecycle-components']
-    compile rootProject.ext.dependencies["refresh"]
-    compile rootProject.ext.dependencies["refresh_header"]
+    implementation rootProject.ext.dependencies["refresh"]
+    implementation rootProject.ext.dependencies["refresh_header"]
     implementation rootProject.ext.dependencies['tablayout']
     implementation rootProject.ext.dependencies['roundview']
     implementation rootProject.ext.dependencies['multidex']
     implementation rootProject.ext.dependencies['recyclerview-v7']
+    implementation rootProject.ext.dependencies["gson"]
     implementation 'com.nineoldandroids:library:2.4.0'
     implementation project(':mvp')
     implementation project(':library')
+    implementation project(':rxretrofitlibrary')
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'

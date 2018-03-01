@@ -11,7 +11,7 @@ import com.sgl.dou.mvp.View.AppDelegate;
  * Created by sugl on 2018/2/27 0027.
  */
 
-public abstract class PullRefreshDelegate extends AppDelegate {
+public abstract class PullRefreshDelegate extends HeaderDelegate {
     public static final int RECYCLER_BOTH = 0; // 设置刷新加载
     public static final int RECYCLER_DISABLE = 1; //  不刷新不加载
     public static final int RECYCLER_REFRESH = 2; // 只刷新
@@ -55,6 +55,7 @@ public abstract class PullRefreshDelegate extends AppDelegate {
                 refreshView.setEnableLoadMore(true);
                 break;
             case RECYCLER_DISABLE:
+                reset=true;
                 refreshView.setEnableRefresh(false);
                 refreshView.setEnableLoadMore(false);
                 refreshView.finishLoadMore();

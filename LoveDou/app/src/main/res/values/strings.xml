@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">LoveDou</string>
+    <string name="common_nodata">暂无数据</string>
 </resources>

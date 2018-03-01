@@ -1,0 +1,41 @@
+{
+    "Data": {
+        "ChannelCount": 2,
+        "Channels": [
+            {
+                "ChannelId": "401",
+                "Ids": [
+                    {
+                        "openid": "asdfadfasdf",
+                        "roleid": "5833d2e6048fb7a87a7f326d#110000",
+                        "headimage": "http://app100698537.imgcache.qzoneapp.com/app100698537/CosMobile/header/robot/128x128/042.png",
+                        "nickname": "Á÷ÓêºÛ¼£",
+                        "level": 30,
+                        "areaid": "110"
+                    },
+                    {
+                        "openid": "asdfadfasdf",
+                        "roleid": "5833d2e6048fb7a87a7f326d#110000",
+                        "headimage": "http://app100698537.imgcache.qzoneapp.com/app100698537/CosMobile/header/robot/128x128/042.png",
+                        "nickname": "Á÷ÓêºÛ¼£",
+                        "level": 30,
+                        "areaid": "110"
+                    }
+                ]
+            },
+            {
+                "ChannelId": "402",
+                "Ids": [
+                    {
+                        "openid": "asdfadfasdf",
+                        "roleid": "5833d2e6048fb7a87a7f326d#110000",
+                        "headimage": "http://app100698537.imgcache.qzoneapp.com/app100698537/CosMobile/header/robot/128x128/042.png",
+                        "nickname": "Á÷ÓêºÛ¼£",
+                        "level": 30,
+                        "areaid": "110"
+                    }
+                ]
+            }
+        ]
+    }
+}
