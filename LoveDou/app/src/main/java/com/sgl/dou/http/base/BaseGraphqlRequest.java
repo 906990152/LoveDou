@@ -36,8 +36,7 @@ public class BaseGraphqlRequest<T> extends BaseApi implements HttpOnNextListener
     @Override
     public Observable getObservable(Retrofit retrofit) {
         BaseGraphqlService graphqlService=retrofit.create(BaseGraphqlService.class);
-        graphqlService.getResult(GenURL(urlParam));
-        return null;
+        return graphqlService.getResult(GenURL(urlParam));
     }
     protected  String GenURL(String param) {
         try {

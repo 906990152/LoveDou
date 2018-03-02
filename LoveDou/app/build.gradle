@@ -10,6 +10,14 @@ android {
     dexOptions {
         javaMaxHeapSize "4g"
     }
+        packagingOptions {
+            exclude 'META-INF/rxjava.properties'
+            exclude 'META-INF/NOTICE'
+            exclude 'META-INF/NOTICE.txt'
+            exclude 'META-INF/LICENSE'
+            exclude 'META-INF/LICENSE.txt'
+        }
+
     defaultConfig {
         applicationId rootProject.ext.android['applicationId']
         minSdkVersion rootProject.ext.android['minSdkVersion']

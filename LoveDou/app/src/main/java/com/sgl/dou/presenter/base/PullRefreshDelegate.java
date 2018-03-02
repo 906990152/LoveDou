@@ -28,6 +28,7 @@ public abstract class PullRefreshDelegate extends HeaderDelegate {
             return;
         }
         refreshView = get(getRefreshViewId());
+        setHeadAndFooterStyle();
 
     }
     //设置刷新控件刷新和加载风格

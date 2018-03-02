@@ -1,5 +1,8 @@
 package com.sgl.dou.presenter.base;
 
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.sgl.dou.R;
 import com.sgl.dou.http.base.CommonCallback;
 import com.sgl.dou.library.recycleview.adapter.MultiItemTypeAdapter;
@@ -37,6 +40,25 @@ public abstract class PullRefreshFragment<T, V extends RecyclerRefreshDelegate> 
     }
 
     @Override
+    protected void bindEvenListener() {
+        super.bindEvenListener();
+        viewDelegate.setRreshOrLoadListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(RefreshLayout refreshLayout) {
+                curIsRefresh = true;
+                isFirstOrPull = true;
+                reset();
+            }
+        }, new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(RefreshLayout refreshLayout) {
+                curIsRefresh = false;
+                loadMore();
+            }
+        });
+    }
+
+    @Override
     protected void onLazyLoad() {
         if (viewDelegate == null) {
             return;
@@ -49,7 +71,7 @@ public abstract class PullRefreshFragment<T, V extends RecyclerRefreshDelegate> 
     }
 
     protected void reset() {
-        if (!activity.isFinishing() && viewDelegate != null) {
+        if (!getActivity().isFinishing() && viewDelegate != null) {
             curPage = 0;
             curIsRefresh = true;
             loadMore();
@@ -57,65 +79,68 @@ public abstract class PullRefreshFragment<T, V extends RecyclerRefreshDelegate> 
     }
 
     protected void loadMore() {
-        if (!viewDelegate.havaNet()){
+        if (!viewDelegate.havaNet()) {
             //无网络时
-            if (mList==null||mList.size()==0){
+            if (mList == null || mList.size() == 0) {
                 viewDelegate.setViewState(1);
             }
             loadComplete();
         }
-        if (!curIsRefresh){
+        if (!curIsRefresh) {
             curPage++;
         }
-        offset=curPage*limit;
+        offset = curPage * limit;
         getData();
     }
-    protected void setList(List<T> list){
-        if (list==null){
+
+    protected void setList(List<T> list) {
+        if (list == null) {
             loadErrorResult();
             return;
         }
-        if (curIsRefresh){
+        if (curIsRefresh) {
             mList.clear();
             adapter.clearData();
-            if (list.size()==0){
+            if (list.size() == 0) {
                 viewDelegate.setViewState(1);
-            }else {
+            } else {
                 viewDelegate.setViewState(0);
             }
         }
         mList.addAll(list);
         adapter.setDatas(mList);
-        if (viewDelegate!=null&&viewDelegate.mHeaderAndFooterWrapper!=null){
+        if (viewDelegate != null && viewDelegate.mHeaderAndFooterWrapper != null) {
             viewDelegate.mHeaderAndFooterWrapper.notifyDataSetChanged();
         }
-        if (!haveMoreOrNot(list)){
+        if (!haveMoreOrNot(list)) {
             viewDelegate.setCanLoadMore(false);
-        }else {
+        } else {
             viewDelegate.setBoth();
         }
         loadComplete();
-        if (viewDelegate.reset){
+        if (viewDelegate.reset) {
             viewDelegate.setCanRefresh(false);
         }
         doAfterReceive();
 
     }
+
     //加载完毕
-    protected void loadComplete(){
-        if (viewDelegate!=null){
+    protected void loadComplete() {
+        if (viewDelegate != null) {
             viewDelegate.complete();
         }
     }
+
     // 设置完数据的其他操作
-    protected void doAfterReceive(){
+    protected void doAfterReceive() {
 
     }
 
     @Override
     public void onSuccess(CommonEntity<T> result) {
-        if (result.getData()!=null){
-            ArrayList models=((ServerStatus) result.getData()).getList();
+        if (result.getData() != null) {
+            ArrayList models = ((ServerStatus) result.getData()).getList();
             setList(models);
             doAfterReceive();
         }
@@ -128,9 +153,10 @@ public abstract class PullRefreshFragment<T, V extends RecyclerRefreshDelegate> 
 
     /**
      * 判断是否还有更多数据
+     *
      * @param list
      */
-    protected boolean haveMoreOrNot(List list){
+    protected boolean haveMoreOrNot(List list) {
         if (list.size() < limit) {
             return false;
         }
@@ -138,9 +164,10 @@ public abstract class PullRefreshFragment<T, V extends RecyclerRefreshDelegate> 
     }
 
     // 数据都显示出来之后的处理
-    protected void doAfterDataSet(){
+    protected void doAfterDataSet() {
 
     }
+
     // id为空，或者数据错误的情况 显示一个空数据
     public void loadErrorResult() {
         if (viewDelegate != null) {
@@ -148,6 +175,7 @@ public abstract class PullRefreshFragment<T, V extends RecyclerRefreshDelegate> 
             viewDelegate.setViewState(1);
         }
     }
+
     protected abstract MultiItemTypeAdapter getAdapter();
 
     protected abstract void getData();

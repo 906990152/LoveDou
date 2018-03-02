@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/refresh_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+          <!--  <com.bigkoo.convenientbanner.ConvenientBanner
+                android:id="@+id/news_banner"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/common_190dp"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"
+                app:canLoop="true" />
+-->
+            <include layout="@layout/layout_recyclerview" />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>

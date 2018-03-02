@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--  百分比：与16进制转换
+    5%     c.c
+    10%     1a
+    20%     33
+    30%     4d
+    40%     66
+    50%     80
+    60%     99
+    70%     b3
+    80%     cc
+    90%     e6-->
+</resources>

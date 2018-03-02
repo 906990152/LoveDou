@@ -1,15 +1,11 @@
-package com.sgl.dou.Delegate;
+package com.sgl.dou.delegate;
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.view.View;
 import android.widget.TextView;
 
 import com.flyco.tablayout.SlidingTabLayout;
-import com.sgl.dou.BaseFragmentActivity;
 import com.sgl.dou.R;
-import com.sgl.dou.fragment.BlankFragment;
 import com.sgl.dou.mvp.View.AppDelegate;
 
 import java.util.ArrayList;

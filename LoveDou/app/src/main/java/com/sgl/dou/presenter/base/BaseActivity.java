@@ -27,6 +27,11 @@ public abstract class BaseActivity<T extends AppDelegate> extends ActivityPresen
         super.initValue();
     }
 
+    @Override
+    protected void bindEvenListener() {
+        super.bindEvenListener();
+    }
+
     //获取acitivity传递过来的值
     protected void getIntentData() {
         if (getIntent() == null) {

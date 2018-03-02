@@ -1,4 +1,4 @@
-package com.sgl.dou.Delegate;
+package com.sgl.dou.delegate;
 
 import android.widget.TextView;
 

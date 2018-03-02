@@ -3,7 +3,7 @@ package com.sgl.dou.fragment;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.sgl.dou.Delegate.BlankFragDelegate;
+import com.sgl.dou.delegate.BlankFragDelegate;
 import com.sgl.dou.presenter.base.BaseFragment;
 
 /**

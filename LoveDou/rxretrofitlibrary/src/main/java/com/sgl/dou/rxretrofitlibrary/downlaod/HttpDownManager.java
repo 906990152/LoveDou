@@ -1,6 +1,5 @@
 package com.sgl.dou.rxretrofitlibrary.downlaod;
 
-import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.sgl.dou.rxretrofitlibrary.downlaod.DownLoadListener.DownloadInterceptor;
 import com.sgl.dou.rxretrofitlibrary.exception.HttpTimeException;
 import com.sgl.dou.rxretrofitlibrary.exception.RetryWhenNetworkException;
@@ -17,6 +16,7 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient;
 import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
@@ -88,7 +88,7 @@ public class HttpDownManager {
             Retrofit retrofit = new Retrofit.Builder()
                     .client(builder.build())
                     .addConverterFactory(ScalarsConverterFactory.create())
-                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .baseUrl(getBasUrl(info.getUrl()))
                     .build();
             httpService= retrofit.create(HttpDownService.class);

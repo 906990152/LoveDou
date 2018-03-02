@@ -2,7 +2,6 @@ package com.sgl.dou.rxretrofitlibrary.http;
 
 import com.ihsanbal.logging.Level;
 import com.ihsanbal.logging.LoggingInterceptor;
-import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.sgl.dou.rxretrofitlibrary.Api.BaseApi;
 import com.sgl.dou.rxretrofitlibrary.RxRetrofitApp;
 import com.sgl.dou.rxretrofitlibrary.exception.FactoryException;
@@ -17,6 +16,7 @@ import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import okhttp3.internal.platform.Platform;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
@@ -60,7 +60,7 @@ public class HttpManager {
         retrofit = new Retrofit.Builder()
                 .client(httpClient)
                 .addConverterFactory(ScalarsConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .baseUrl(baseUrl)
                 .build();
         retrofit.newBuilder().baseUrl(baseUrl);
